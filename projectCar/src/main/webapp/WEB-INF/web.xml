@@ -8,9 +8,20 @@
 		<servlet-name>CustomerHome</servlet-name>
 		<servlet-class>com.projectcars.controller.CustomerHome</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AdminHome</display-name>
+		<servlet-name>AdminHome</servlet-name>
+		<servlet-class>com.projectcars.controller.AdminHome</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CustomerHome</servlet-name>
 		<url-pattern>/CustomerHome</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminHome</servlet-name>
+		<url-pattern>/AdminHome</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>home.html</welcome-file>		

@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Customer {
 	private String username;
@@ -19,6 +21,10 @@ public class Customer {
 		this.password = password;
 		this.name = name;
 		this.email = email;
+	}
+	
+	public Customer() {
+		
 	}
 	
 	public String getUsername() {
@@ -109,4 +115,28 @@ public class Customer {
 		}
 		return false;
 	}
+	
+	public ArrayList<CustomerDetails> viewCustomers() {
+		
+		try {
+			Connection con = conDriver();
+			String s = "select * from customer_db";
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(s);
+			
+			ArrayList<CustomerDetails> detailsArrayList = new ArrayList<CustomerDetails>();	
+			
+			while(res.next()) {
+				username = res.getString(1);
+				name = res.getString(2);
+				email = res.getString(4);				
+				detailsArrayList.add(new CustomerDetails(username,name,email));				
+			}
+			return detailsArrayList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;		
+	}
 }
+
